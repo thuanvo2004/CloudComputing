@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ - Hệ thống quản lý sản phẩm</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .hero-section {
+            background-color: #007bff;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        .hero-section p {
+            font-size: 1.2rem;
+        }
+        .btn-main {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-size: 1rem;
+        }
+        .btn-main:hover {
+            background-color: #0056b3;
+        }
+        .action-buttons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .product-card {
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            transition: transform 0.3s ease-in-out;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .user-info {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="container">
+    <div class="user-info">
+        {% if current_user.is_authenticated %}
+            <span class="text-white">Xin Chào{{ current_user.username }}!</span>
+            <a href="{{ url_for('logout') }}" class="btn btn-outline-light btn-sm ml-2">Đăng xuất</a>
+        {% else %}
+            <a href="{{ url_for('login') }}" class="btn btn-outline-light btn-sm">Đăng nhập</a>
+            <a href="{{ url_for('register') }}" class="btn btn-outline-light btn-sm">Đăng ký</a>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Hero Section -->
+<div class="hero-section">
+    <h1>Chào mừng đến với hệ thống quản lý sản phẩm</h1>
+    <p>Xem và quản lý thông tin sản phẩm một cách trực quan.</p>
+</div>
+
+<!-- Danh sách sản phẩm -->
+<div class="container mt-5">
+    <h3 class="mb-4 text-center">📦 Danh sách sản phẩm</h3>
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-4 mb-4">
+            <div class="card product-card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text text-muted">{{ product.description[:100] }}{% if product.description|length > 100 %}...{% endif %}</p>
+                    <p><strong>Giá:</strong> {{ "{:,.0f}".format(product.price) }} VND</p>
+                    <a href="{{ url_for('product_detail', id=product['_id']) }}" class="btn btn-primary btn-sm">Xem chi tiết</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

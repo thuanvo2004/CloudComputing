@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chi tiết sản phẩm</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f6f9;
+            padding: 50px;
+            font-family: Arial, sans-serif;
+        }
+        .product-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="product-card">
+        <a href="{{ url_for('home') }}" class="btn btn-secondary mb-4">← Quay lại trang chủ</a>
+
+        <h2>{{ product.name }}</h2>
+        <p><strong>Mô tả:</strong> {{ product.description }}</p>
+        <p><strong>Giá:</strong> {{ "{:,.0f}".format(product.price) }} VND</p>
+        <p><strong>Danh mục ID:</strong> {{ product.category_id }}</p>
+    </div>
+</div>
+</body>
+</html>

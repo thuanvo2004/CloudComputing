@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bảng điều khiển Admin</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+        .product-actions a {
+            margin-left: 10px;
+        }
+        .btn-logout {
+            float: right;
+        }
+    </style>
+</head>1
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<body>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Xin chào, {{ username }}!</h3>
+            <a href="{{ url_for('admin_logout') }}" class="btn btn-danger btn-sm btn-logout">Đăng xuất</a>
+        </div>
+        <div class="card-body">
+            <h4>Quản lý sản phẩm</h4>
+            <a href="{{ url_for('product_form') }}" class="btn btn-success mb-3">➕ Thêm sản phẩm</a>
+
+            <ul class="list-group">
+                {% for product in products %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong>{{ product.name }}</strong> - {{ product.price }} VNĐ
+                        </div>
+                        <div class="product-actions">
+
+                         <a href="{{ url_for('update_product_form', id=product['_id']) }}" class="btn btn-warning btn-sm">✏️ Sửa</a>
+
+</form>
+
+
+
+
+                            <form method="POST" action="{{ url_for('delete_product', id=product['_id']) }}" style="display:inline;">
+    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?')">🗑️ Xóa</button>
+</form>
+
+
+
+                        </div>
+                    </li>
+                {% else %}
+                    <li class="list-group-item text-muted">Chưa có sản phẩm nào.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+
+
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm sản phẩm</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f6f9;
+            padding: 50px;
+        }
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .top-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="form-container">
+
+        <!-- Các nút điều hướng trên cùng -->
+        <div class="top-buttons">
+            <a href="{{ url_for('home') }}" class="btn btn-outline-primary">← Trang chủ</a>
+            <a href="{{ url_for('admin_dashboard') }}" class="btn btn-outline-secondary">← Dashboard</a>
+        </div>
+
+        <h2 class="mb-4">Thêm sản phẩm mới</h2>
+
+        {% if message %}
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+        {% endif %}
+
+        <form method="POST" action="{{ url_for('handle_form_product') }}">
+            <div class="form-group">
+                <label for="name">Tên sản phẩm</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Nhập tên sản phẩm" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Mô tả</label>
+                <textarea class="form-control" id="description" name="description" rows="3" placeholder="Mô tả sản phẩm"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="price">Giá (VND)</label>
+                <input type="number" class="form-control" id="price" name="price" placeholder="Nhập giá" required>
+            </div>
+            <div class="form-group">
+                <label for="category_id">ID danh mục</label>
+                <input type="number" class="form-control" id="category_id" name="category_id" placeholder="Nhập ID danh mục" required>
+            </div>
+            <button type="submit" class="btn btn-success">Thêm sản phẩm</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "5",
+    "name": "HP Pavilion",
+    "description": "RAM: 8GB, HDD: 1TB, Intel i5, Win10",
+    "price": 18000000,
+    "category_id": 2
+  },
+  {
+    "id": "6",
+    "name": "Lenovo IdeaPad",
+    "description": "RAM: 4GB, SSD: 128GB, Win10 Home",
+    "price": 9500000,
+    "category_id": 3
+  },
+  {
+    "id": "7",
+    "name": "MSI Modern 14",
+    "description": "RAM: 8GB, SSD: 512GB, Intel i7, Win11",
+    "price": 19500000,
+    "category_id": 1
+  },
+  {
+    "id": "8",
+    "name": "Acer Aspire 5",
+    "description": "RAM: 8GB, SSD: 256GB, Ryzen 5, Win10",
+    "price": 16500000,
+    "category_id": 3
+  },
+  {
+    "id": "9",
+    "name": "Macbook Pro M1",
+    "description": "RAM: 8GB, SSD: 256GB",
+    "price": 25000000,
+    "category_id": 2
+  },
+  {
+    "id": "10",
+    "name": "Macbook Pro M1",
+    "description": "RAM: 8GB, SSD: 256GB",
+    "price": 25000000,
+    "category_id": 2
+  },
+  {
+    "id": "11",
+    "name": "Macbook Pro M1",
+    "description": "RAM: 8GB, SSD: 256GB",
+    "price": 25000000,
+    "category_id": 2
+  }]
